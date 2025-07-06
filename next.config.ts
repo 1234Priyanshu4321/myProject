@@ -1,7 +1,34 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    serverActions: {},
 
-const nextConfig: NextConfig = {
-  /* config options here */
+  },
+  serverExternalPackages: ["mongoose"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'img.clerk.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.clerk.dev',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'uploadthing.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+        pathname: '/**',
+      },
+    ],
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
