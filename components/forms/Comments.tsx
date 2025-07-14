@@ -10,7 +10,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from '../ui/input';
 import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { addComment } from '@/lib/actions/thread.actions';
+import { addCommentToThread } from '@/lib/actions/thread.actions';
 //import { updateUser } from '@/lib/actions/user.actions';
 //import { createThread } from '@/lib/actions/thread.actions';
 
@@ -32,7 +32,7 @@ const Comment = ({ threadId, cUserImg, cUserId }: Props) => {
     })
 
     const onSubmit = async (values: z.infer<typeof CommentValidation>) => {
-        await addComment(threadId, values.thread, JSON.parse(cUserId), pathname);
+        await addCommentToThread(threadId, values.thread, JSON.parse(cUserId), pathname);
         form.reset();
     }
     return (
