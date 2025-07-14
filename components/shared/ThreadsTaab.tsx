@@ -10,9 +10,9 @@ interface Props {
 }
 
 const ThreadsTab = async ({ cUserId, accId, accType }: Props) => {
-    let result = any;
+    let result = await fetchCommunityPosts(accId);
     if (accType === "Community") result = await fetchCommunityPosts(accId);
-    else result = await fetchUserPosts(accId)
+    else result = await fetchUserPosts(accId);
 
     if (!result) redirect('/');
 
